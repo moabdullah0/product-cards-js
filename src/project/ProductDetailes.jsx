@@ -8,7 +8,7 @@ const ProductDetailes = () => {
   const { id } = useParams();
   const { addToCart } = useCartStore();
   const { data } = useQuery({
-    queryKey: ["products", id], // Add id to queryKey for proper caching
+    queryKey: ["products", id], 
     queryFn: async () =>
       axios.get(`https://dummyjson.com/products/${id}`).then((res) => res.data),
   });

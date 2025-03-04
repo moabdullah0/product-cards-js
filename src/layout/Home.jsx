@@ -52,7 +52,6 @@ const Home = () => {
 
   const handleAddToCart = (product) => {
     addToCart(product);
-    alert(`${product.name} added to cart!`);
   };
 
   return (
