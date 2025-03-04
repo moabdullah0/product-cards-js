@@ -4,6 +4,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
 import useAuthStore from "../app/authStore";
+import { useNavigate } from "react-router-dom";
 
 const loginSchema = z.object({
   username: z.string(),
@@ -18,13 +19,16 @@ const LoginPage = () => {
   } = useForm({
     resolver: zodResolver(loginSchema),
   });
-  const { setToken } = useAuthStore();
+  const { setToken, token } = useAuthStore();
   const onSubmit = async (data) => {
     console.log(data);
     const res = await axios.post("https://dummyjson.com/auth/login", data);
     setToken(res.data.accessToken);
   };
-
+  const navigation = useNavigate();
+  if (token) {
+    navigation('/home')
+  }
   return (
     <div>
       <section className="bg-gray-50 dark:bg-gray-900">
