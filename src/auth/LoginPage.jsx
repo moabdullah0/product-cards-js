@@ -27,7 +27,7 @@ const LoginPage = () => {
   };
   const navigation = useNavigate();
   if (token) {
-    navigation('/home')
+    navigation('/')
   }
   return (
     <div>
