@@ -5,7 +5,7 @@ import useAuthStore from "../app/authStore";
 
 const ProfilePage = () => {
   const {token}=useAuthStore()
-  console.log(token)
+  // console.log(token)
   
 
   const { data } = useQuery({

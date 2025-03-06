@@ -10,13 +10,13 @@ const useAuthStore = create(
       // Set token and auth status
       setToken: (token) => set({ 
         token,
-        isAuthenticated: !!token 
+        // isAuthenticated: !!token 
       }),
 
       // Clear token and auth status
       logout: () => set({ 
         token: null,
-        isAuthenticated: false
+        // isAuthenticated: false
       }),
     }),
     {

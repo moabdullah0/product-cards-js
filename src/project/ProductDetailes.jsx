@@ -35,7 +35,7 @@ const ProductDetailes = () => {
               />
             </div>
 
-            <div className="mt-6 sm:mt-8 lg:mt-0">
+            <div className="text-start mt-6 sm:mt-8 lg:mt-0">
               <h1 className="text-xl font-semibold text-gray-900 sm:text-2xl dark:text-white">
                 {data?.title}
               </h1>
@@ -73,7 +73,7 @@ const ProductDetailes = () => {
                 </div>
               </div>
 
-              <div className="mt-6 sm:gap-4 sm:items-center sm:flex sm:mt-8">
+              <div className="mt-6 sm:gap-4 sm:items-center  sm:flex sm:mt-8">
                 <a
                   href="#"
                   title=""
@@ -127,7 +127,7 @@ const ProductDetailes = () => {
 
               <hr className="my-6 md:my-8 border-gray-200 dark:border-gray-800" />
 
-              <p className="mb-6 text-gray-500 dark:text-gray-400">
+              <p className="text-start mb-6 text-gray-500 dark:text-gray-400">
                 {data?.description}
               </p>
             </div>

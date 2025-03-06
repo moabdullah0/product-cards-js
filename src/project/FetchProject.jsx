@@ -3,7 +3,7 @@ import useProject from "../hooks/useProduct";
 import { Link, useNavigate } from "react-router-dom";
 import useCartStore from "../app/store";
 import useAuthStore from "../app/authStore";
-import { motion } from "framer-motion"; // Add framer-motion import
+import { motion } from "framer-motion";
 
 const FetchProject = () => {
   const { addToCart } = useCartStore();
@@ -13,7 +13,7 @@ const FetchProject = () => {
 
   useEffect(() => {
     if (!token) {
-      navigate('/login');
+      navigate("/login");
     }
   }, [token, navigate]);
 
@@ -51,22 +51,19 @@ const FetchProject = () => {
                 {project.description}
               </p>
             </div>
-            <div className="flex gap-5">
+            <div className="flex items-center justify-center gap-5 mb-4">
               <motion.button
                 onClick={() => addToCart(project)}
-                className="bg-blue-700 text-white mb-4 rounded-md px-4 py-2"
+                className="bg-blue-700 text-white rounded-md px-4 py-2"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
               >
                 Add To Cart
               </motion.button>
-              <motion.div
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-              >
+              <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
                 <Link
                   to={"/product/" + project.id}
-                  className="bg-blue-700 text-white mb-4 rounded-md px-4 py-2"
+                  className="bg-blue-700 text-white rounded-md px-4 py-2"
                 >
                   Show Details
                 </Link>
