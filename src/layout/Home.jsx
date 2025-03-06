@@ -2,11 +2,14 @@ import React, { useState } from 'react';
 import useCartStore from '../app/store';
 import { Link } from 'react-router-dom';
 import { products } from '../constant/dataHome';
-import { motion } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
+import { useRef } from 'react';
 
 const Home = () => {
   const { addToCart } = useCartStore();
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const heroRef = useRef(null);
+  const isInView = useInView(heroRef, { once: true });
 
   const handleAddToCart = (product) => {
     addToCart(product);
@@ -20,25 +23,76 @@ const Home = () => {
     <div className="container mx-auto px-4 py-8">
       {/* Hero Section */}
       <motion.div 
+        ref={heroRef}
         initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
+        animate={isInView ? { 
+          opacity: 1, 
+          y: 0,
+          transition: {
+            duration: 0.6,
+            staggerChildren: 0.2
+          }
+        } : { opacity: 0, y: 50 }}
         className="bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg p-8 mb-10 relative overflow-hidden"
       >
-        <div className="max-w-2xl relative z-10">
-          <h1 className="text-4xl font-bold mb-4">Welcome to Our Tech Store</h1>
-          <p className="text-xl mb-6">Discover the latest gadgets and accessories at amazing prices.</p>
-          <Link to={'/products'} className="bg-white text-blue-600 px-6 py-2 rounded-full font-medium hover:bg-gray-100 transition-colors">
-            Shop Now
-          </Link>
-        </div>
-        <img 
+        <motion.div 
+          className="max-w-2xl relative z-10"
+          initial={{ opacity: 0, x: -50 }}
+          animate={isInView ? { 
+            opacity: 1, 
+            x: 0,
+            transition: { delay: 0.3, duration: 0.6 }
+          } : { opacity: 0, x: -50 }}
+        >
+          <motion.h1 
+            className="text-4xl font-bold mb-4"
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { 
+              opacity: 1, 
+              y: 0,
+              transition: { delay: 0.4, duration: 0.6 }
+            } : { opacity: 0, y: 20 }}
+          >
+            Welcome to Our Tech Store
+          </motion.h1>
+          <motion.p 
+            className="text-xl mb-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { 
+              opacity: 1, 
+              y: 0,
+              transition: { delay: 0.5, duration: 0.6 }
+            } : { opacity: 0, y: 20 }}
+          >
+            Discover the latest gadgets and accessories at amazing prices.
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { 
+              opacity: 1, 
+              y: 0,
+              transition: { delay: 0.6, duration: 0.6 }
+            } : { opacity: 0, y: 20 }}
+          >
+            <Link to={'/products'} className="bg-white text-blue-600 px-6 py-2 rounded-full font-medium hover:bg-gray-100 transition-colors">
+              Shop Now
+            </Link>
+          </motion.div>
+        </motion.div>
+        <motion.img 
           src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80"
           alt="Tech workspace with laptop and gadgets"
           className="absolute top-0 right-0 h-full w-1/2 object-cover opacity-20"
+          initial={{ opacity: 0, scale: 1.2 }}
+          animate={isInView ? { 
+            opacity: 0.2, 
+            scale: 1,
+            transition: { delay: 0.3, duration: 0.8 }
+          } : { opacity: 0, scale: 1.2 }}
         />
       </motion.div>
 
+      {/* Rest of the components remain unchanged */}
       {/* Featured Products */}
       <div className="mb-12">
         <h2 className="text-2xl font-bold mb-6">Featured Products</h2>
