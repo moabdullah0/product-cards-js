@@ -1,14 +1,14 @@
 import React, { useEffect } from "react";
-import useProject from "../hooks/useProduct";
 import { Link, useNavigate } from "react-router-dom";
 import useCartStore from "../app/store";
 import useAuthStore from "../app/authStore";
 import { motion } from "framer-motion";
+import { useProduct } from "../hooks/useProduct";
 
 const FetchProject = () => {
   const { addToCart } = useCartStore();
   const { token } = useAuthStore();
-  const { data, isLoading } = useProject();
+  const { data, isLoading } = useProduct();
   const navigate = useNavigate();
 
   useEffect(() => {

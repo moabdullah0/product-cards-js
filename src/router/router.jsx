@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
-import FetchProject from "../project/FetchProject";
-import ProductDetailes from "../project/ProductDetailes";
+import FetchProject from "../Products/FetchProject";
+import ProductDetailes from "../Products/ProductDetailes";
 import LoginPage from "../auth/LoginPage";
 import Home from "../layout/Home";
 import Checkout from "../components/Checkout";
@@ -11,18 +11,18 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    
+
     children: [
       {
-        index:true,
+        index: true,
         element: <Home />,
       },
       {
-        path:'profile',
+        path: "profile",
         element: <ProfilePage />,
       },
       {
-        path:'login',
+        path: "login",
         element: <LoginPage />,
       },
       {
