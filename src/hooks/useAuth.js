@@ -1,0 +1,39 @@
+import { useMutation } from "@tanstack/react-query";
+import axios from "axios";
+import useAuthStore from "../app/authStore";
+import { useNavigate } from "react-router-dom";
+
+export const useAuth = () => {
+  const { setToken } = useAuthStore();
+  const navigate = useNavigate();
+
+  const loginMutation = useMutation({
+    mutationFn: (credentials) =>
+      axios
+        .post("https://dummyjson.com/auth/login", {
+            username:credentials.username,
+            password:credentials.password,
+        })
+        .then((res) => res.data),
+    onSuccess: (data) => {
+      setToken(data.accessToken);
+      navigate("/");
+    },
+  });
+
+  // Logout function
+  const logout = () => {
+    setToken(null);
+    navigate("/login");
+  };
+
+  return {
+    login: loginMutation.mutate,
+    logout,
+    isLoading: loginMutation.isPending,
+    error: loginMutation.error,
+    isError: loginMutation.isError,
+  };
+};
+
+export default useAuth;
