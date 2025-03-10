@@ -5,7 +5,8 @@ import ProductDetailes from "../project/ProductDetailes";
 import LoginPage from "../auth/LoginPage";
 import Home from "../layout/Home";
 import Checkout from "../components/Checkout";
-import ProfilePage from "../auth/profilepage";
+import ProfilePage from "../auth/ProfilePage"; // Fixed capitalization in import
+
 const router = createBrowserRouter([
   {
     path: "/",
