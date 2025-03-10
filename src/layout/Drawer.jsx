@@ -1,13 +1,29 @@
 import React, { useState } from "react";
 import useCartStore from "../app/store";
+import { useNavigate } from "react-router-dom";
 
 const Drawer = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { cartItems, removeFromCart, updateQuantity, getTotalPrice } =
-    useCartStore();
+  const { cartItems, removeFromCart, updateQuantity, getTotalPrice } = useCartStore();
+  const navigate = useNavigate();
 
   const toggleDrawer = () => {
     setIsOpen(!isOpen);
+  };
+
+  const handleWhatsAppCheckout = () => {
+    const itemsText = cartItems.map(item => 
+      `• ${item.name} - $${item.price.toFixed(2)} x ${item.quantity}`
+    ).join("\n");
+
+    const total = getTotalPrice();
+    const message = `I want to purchase:\n${itemsText}\n\nTotal: $${total.toFixed(2)}`;
+    
+    // Use the correct WhatsApp API URL format
+    const whatsappUrl = `https://api.whatsapp.com/send?phone=963982567173&text=${encodeURIComponent(message)}`;
+    
+    // Open in the same tab to ensure message appears
+    window.location.href = whatsappUrl;
   };
 
   return (
@@ -141,9 +157,20 @@ const Drawer = () => {
                 <span>${getTotalPrice().toFixed(2)}</span>
               </div>
 
-              <button className="w-full mt-4 py-2 bg-blue-700 text-white rounded-lg hover:bg-blue-800">
-                Checkout
-              </button>
+              <div className="mt-4 space-y-2">
+                <button
+                  onClick={() => navigate('/checkout')}
+                  className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors"
+                >
+                  Regular Checkout
+                </button>
+                <button
+                  onClick={handleWhatsAppCheckout}
+                  className="w-full bg-green-600 text-white py-3 px-6 rounded-lg hover:bg-green-700 transition-colors"
+                >
+                  WhatsApp Checkout
+                </button>
+              </div>
             </div>
           </div>
         )}

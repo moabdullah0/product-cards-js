@@ -1,25 +1,10 @@
-import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
 import React from "react";
-import useAuthStore from "../app/authStore";
 import { motion } from "framer-motion";
+import useProfile from "../hooks/useProfile";
 
 const ProfilePage = () => {
-  const { token } = useAuthStore();
-  // console.log(token)
+  const { profile: data, isLoading } = useProfile();
 
-  const { data, isLoading } = useQuery({
-    queryKey: ["profile"],
-    queryFn: () =>
-      axios.get("https://dummyjson.com/auth/me", {
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
-        }
-      }).then((res) => res.data),
-  });
-
-  // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -41,7 +26,6 @@ const ProfilePage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50 py-12 px-4 sm:px-6 lg:px-8">
-      {/* Background decorative elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none">
         <motion.div
           className="absolute top-20 left-20 w-64 h-64 bg-blue-300 rounded-full mix-blend-multiply filter blur-xl opacity-30"
@@ -81,7 +65,6 @@ const ProfilePage = () => {
           </div>
         ) : (
           <>
-            {/* Profile header with background */}
             <div className="h-32 bg-gradient-to-r from-blue-500 to-purple-600"></div>
             
             <motion.div

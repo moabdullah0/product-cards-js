@@ -4,7 +4,8 @@ import FetchProject from "../project/FetchProject";
 import ProductDetailes from "../project/ProductDetailes";
 import LoginPage from "../auth/LoginPage";
 import Home from "../layout/Home";
-import ProfilePage from "../auth/ProfilePage";
+import Checkout from "../components/Checkout";
+import ProfilePage from "../auth/profilepage";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
       {
         path: "product/:id",
         element: <ProductDetailes />,
+      },
+      {
+        path: "checkout",
+        element: <Checkout />,
       },
     ],
   },
