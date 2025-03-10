@@ -18,11 +18,8 @@ const Drawer = () => {
 
     const total = getTotalPrice();
     const message = `I want to purchase:\n${itemsText}\n\nTotal: $${total.toFixed(2)}`;
+    const whatsappUrl = `https://api.whatsapp.com/send?phone=352681538889?text=${encodeURIComponent(message)}`;
     
-    // Use the correct WhatsApp API URL format
-    const whatsappUrl = `https://api.whatsapp.com/send?phone=963982567173&text=${encodeURIComponent(message)}`;
-    
-    // Open in the same tab to ensure message appears
     window.location.href = whatsappUrl;
   };
 
