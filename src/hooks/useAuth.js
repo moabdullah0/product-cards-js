@@ -2,6 +2,7 @@ import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import useAuthStore from "../app/authStore";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export const useAuth = () => {
   const { setToken } = useAuthStore();
@@ -18,6 +19,7 @@ export const useAuth = () => {
     onSuccess: (data) => {
       setToken(data.accessToken);
       navigate("/");
+      toast.success('Login successful!')
     },
   });
 

@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-
+import { toast } from 'react-toastify'
 const useCartStore = create((set) => ({
   cartItems: [],
   
@@ -8,6 +8,7 @@ const useCartStore = create((set) => ({
       const existingItem = state.cartItems.find(item => item.id === product.id)
       
       if (existingItem) {
+        toast.success('Item quantity updated in cart')
         return {
           cartItems: state.cartItems.map(item =>
             item.id === product.id 
@@ -17,6 +18,7 @@ const useCartStore = create((set) => ({
         }
       }
       
+      toast.success('Item added to cart')
       return {
         cartItems: [...state.cartItems, { ...product, quantity: 1 }]
       }

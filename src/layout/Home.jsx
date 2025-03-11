@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { products } from '../constant/dataHome';
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
+import Slider from '../slider/Slider';
 
 const Home = () => {
   const { addToCart } = useCartStore();
@@ -92,8 +93,7 @@ const Home = () => {
         />
       </motion.div>
 
-      {/* Rest of the components remain unchanged */}
-      {/* Featured Products */}
+    <Slider/>
       <div className="mb-12">
         <h2 className="text-2xl font-bold mb-6">Featured Products</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

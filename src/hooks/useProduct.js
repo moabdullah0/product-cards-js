@@ -1,13 +1,18 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
-export const useProduct = () => {
+export const useProduct = (search) => {
+  console.log(search)
   return useQuery({
-    queryKey: ["project"],
-    queryFn: () =>
-      axios
-        .get("https://dummyjson.com/products")
-        .then((res) => res.data.products),
+    queryKey: ["project", search],
+    queryFn: async () => {
+      const response = await axios.get(
+        search
+          ? `https://dummyjson.com/products/category/${search}`
+          : "https://dummyjson.com/products"
+      );
+      return response.data.products;
+    },
   });
 };
 
