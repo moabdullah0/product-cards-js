@@ -1,6 +1,6 @@
 const generateWhatsAppMessage = (cartItems, shippingInfo, subtotal, tax, total) => {
   const itemsText = cartItems.map((item) => 
-    `• ${item.name} - $${item.price.toFixed(2)} x ${item.quantity || 1}`
+    `• ${item.title} - $${item.price.toFixed(2)} x ${item.quantity || 1}`
   ).join("\n");
 
   const totalsText = `\nSubtotal: $${subtotal.toFixed(2)}\nTax: $${tax.toFixed(2)}\nTotal: $${total.toFixed(2)}`;

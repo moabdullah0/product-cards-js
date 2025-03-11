@@ -1,12 +1,12 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
-import FetchProject from "../Products/FetchProject";
+import FetchProject from "../Products/FetchProduct";
 import ProductDetailes from "../Products/ProductDetailes";
-import Home from "../layout/Home";
-import Checkout from "../components/Checkout";
+import Checkout from "../Checkout/Checkout";
 import ProfilePage from "../auth/ProfilePage";
-import LoginPage from "../auth/loginpage";
+import LoginPage from "../auth/LoginPage";
 import Slider from "../slider/Slider";
+import Home from "../layout/Home/Home";
 
 const router = createBrowserRouter([
   {

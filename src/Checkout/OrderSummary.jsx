@@ -12,15 +12,14 @@ const OrderSummary = ({ cartItems, subtotal, tax, total }) => {
             className="flex justify-between p-4 bg-gray-50 rounded-xl"
             whileHover={{ scale: 1.01 }}
           >
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center justify-center space-x-4">
               <img 
                 className="w-16 h-16 object-cover rounded-lg"
                 src={item.thumbnail}
                 alt={item.name}
               />
               <div>
-                <h3 className="font-medium text-gray-800">{item.name}</h3>
-                <p className="text-sm text-gray-500">{item.description}</p>
+                <h3 className="font-medium text-gray-800">{item.title}</h3>
               </div>
             </div>
             <p className="font-semibold text-gray-800">${item.price.toFixed(2)}</p>
