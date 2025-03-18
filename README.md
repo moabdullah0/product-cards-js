@@ -1,6 +1,6 @@
 ## Project Overview
 
-Welcome to our project! This is a platform designed to provide you with the latest in technology and innovation. Below is a brief overview of the key sections available on our platform:
+Welcome to our project! This platform is designed to provide you with the latest in technology and innovation, specifically tailored for trainees to enhance their learning experience. Below is a brief overview of the key sections available on our platform:
 
 - **Home**: The main landing page where you can discover the future of technology.
 - **Products**: Explore our premium selection of cutting-edge devices.
@@ -14,6 +14,15 @@ Experience innovation with our carefully curated selection of the latest devices
 **Explore Now** to stay ahead in the world of technology!
 
 ![image](https://github.com/user-attachments/assets/db38fd74-0380-4fbc-8828-354a5a9375df)
+
+## Project Details
+
+This project was developed with trainees in mind, aiming to provide a hands-on experience with modern web development practices. The following concepts and features were implemented:
+
+- **Global State Management**: Utilizing **Zustand** for efficient and scalable state management across the application.
+- **React Query**: Employed for data fetching, caching, and synchronization, ensuring a smooth and responsive user experience.
+- **Add to Cart and Favorites**: Users can easily add products to their cart or save them to their favorites for future reference.
+- **Checkout Using WhatsApp**: A unique feature allowing users to complete their purchases directly through WhatsApp, streamlining the checkout process.
 
 ## Featured Products
 
@@ -39,27 +48,26 @@ These products are carefully selected to provide you with the best in technology
 ![image](https://github.com/user-attachments/assets/5c96899a-74ab-41e9-be3c-967dd9454b73)
 
 ### Authentication
+
 To access personalized features, you can create an account or log in to your existing one. Our authentication system ensures your data is secure and your experience is tailored to your preferences.
 
-Key Features:
-Sign Up: Create a new account by providing your email, username, and password.
-
-Log In: Securely log in to your account to access your profile, favorites, and order history.
-
-Password Recovery: Forgot your password? Use our password recovery feature to reset it quickly.
-
-Social Login: Sign in using your Google or Facebook account for a faster and more convenient experience.
+**Key Features**:
+- **Sign Up**: Create a new account by providing your email, username, and password.
+- **Log In**: Securely log in to your account to access your profile, favorites, and order history.
+- **Password Recovery**: Forgot your password? Use our password recovery feature to reset it quickly.
+- **Social Login**: Sign in using your Google or Facebook account for a faster and more convenient experience.
 
 ![image](https://github.com/user-attachments/assets/5e6cc7c1-133e-474e-9b68-ea49600dcb17)
 
 ### Profile Management
+
 Once logged in, you can manage your profile and personalize your experience on the platform. Here’s what you can do:
 
-View and Edit Profile Details
-Personal Information: Update your name, email, and contact details.
-
-Shipping Address: Add or edit your shipping address for faster checkout.
-
-Profile Picture: Upload a profile picture to personalize your account.
+- **View and Edit Profile Details**:
+  - **Personal Information**: Update your name, email, and contact details.
+  - **Shipping Address**: Add or edit your shipping address for faster checkout.
+  - **Profile Picture**: Upload a profile picture to personalize your account.
 
 ![image](https://github.com/user-attachments/assets/fcab915c-f427-47d5-bd45-342334e1b148)
+
+This project not only serves as a practical example for trainees but also incorporates modern development practices and user-friendly features to enhance the overall experience.
