@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { products } from "../../constant/dataHome";
+import { products } from "../constant/dataHome";
 
 const AllProducts = ({ handleProductClick, handleAddToCart }) => {
   return (

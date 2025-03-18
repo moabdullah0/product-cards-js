@@ -3,6 +3,8 @@ import axios from "axios";
 import useAuthStore from "../app/authStore";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import axiosInstance from "../services/api-client";
+import apiClient from "../services/api-client";
 
 export const useAuth = () => {
   const { setToken } = useAuthStore();
@@ -10,8 +12,8 @@ export const useAuth = () => {
 
   const loginMutation = useMutation({
     mutationFn: (credentials) =>
-      axios
-        .post("https://dummyjson.com/auth/login", {
+      apiClient
+        .post("/auth/login", {
             username:credentials.username,
             password:credentials.password,
         })

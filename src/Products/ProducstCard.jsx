@@ -11,12 +11,12 @@ const ProductCard = ({ project, addToCart }) => {
       className="h-full"
     >
       <motion.div
-        className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 h-full flex flex-col"
+        className="product-card"
         whileHover={{ y: -5 }}
       >
         <div className="relative overflow-hidden group">
           <motion.img
-            className="w-full h-64 object-cover transition-transform duration-300"
+            className="img-product"
             src={project.thumbnail}
             alt={project.title}
             whileHover={{ scale: 1.05 }}

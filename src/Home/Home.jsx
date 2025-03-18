@@ -1,12 +1,13 @@
 import React, { useState, useRef } from 'react';
 import {  useInView } from 'framer-motion';
 
-import useCartStore from '../../app/store';
-import Slider from '../../slider/Slider';
+
 import HeroSection from './Hero';
 import FeaturedProducts from './FeaturedProducts';
 import ProductModal from './ProductModal';
 import AllProducts from './AllProducts';
+import useCartStore from '../app/store';
+import Slider from '../slider/Slider';
 
 const Home = () => {
   const { addToCart } = useCartStore();

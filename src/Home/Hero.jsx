@@ -10,7 +10,7 @@ const HeroSection = ({ isInView }) => {
       animate={{ opacity: 1 }}
       className="bg-gradient-to-br from-indigo-600 via-purple-500 to-pink-200 text-white rounded-xl p-12 mb-16 relative overflow-hidden shadow-2xl"
     >
-      <div className="max-w-3xl relative z-10">
+      <div className="max-w-lg relative z-10">
         <h1 className="text-5xl font-extrabold mb-6 leading-tight">
           Discover the Future of Technology
         </h1>

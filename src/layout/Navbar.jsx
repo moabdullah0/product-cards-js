@@ -1,7 +1,17 @@
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import Drawer from "./Drawer";
+import {
+  FaBars,
+  FaTimes,
+  FaHome,
+  FaBox,
+  FaUser,
+  FaSignInAlt,
+  FaSignOutAlt,
+} from "react-icons/fa";
 import useAuthStore from "../app/authStore";
+import Favorite from "../Products/Favorite";
+import DrawerProduct from "../Products/DrawerProduct";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -17,108 +27,82 @@ const Navbar = () => {
 
   return (
     <div className="fixed top-0 left-0 right-0 z-50">
-      <nav className="bg-white shadow-md border-gray-200 dark:bg-gray-900">
-        <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto px-6 py-4">
-          <Link
-            to="/"
-            className="flex items-center space-x-3 rtl:space-x-reverse"
-          >
+      <nav className="navbar-container">
+        <div className="navbar-wrapper">
+          <Link to="/" className="navbar-brand">
             <img
               src="https://flowbite.com/docs/images/logo.svg"
               className="h-8"
               alt="Flowbite Logo"
             />
-            <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-              Project
-            </span>
+            <span className="navbar-brand-text">Project</span>
           </Link>
           <button
             onClick={toggleMenu}
             type="button"
-            className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+            className="navbar-menu-button"
             aria-controls="navbar-default"
             aria-expanded={isMenuOpen}
           >
             <span className="sr-only">Open main menu</span>
-            <svg
-              className="w-5 h-5"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 17 14"
-            >
-              <path
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M1 1h15M1 7h15M1 13h15"
-              />
-            </svg>
+            {isMenuOpen ? (
+              <FaTimes className="navbar-menu-icon" />
+            ) : (
+              <FaBars className="navbar-menu-icon" />
+            )}
           </button>
           <div
-            className={`${
-              isMenuOpen ? "block" : "hidden"
-            } w-full md:block md:w-auto transition-all duration-300 ease-in-out`}
+            className={`navbar-menu ${isMenuOpen ? "open" : ""}`}
             id="navbar-default"
           >
-            <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-              <li>
+            <ul className="navbar-menu-list">
+              <li className="navbar-menu-item">
                 <NavLink
                   to="/"
                   className={({ isActive }) =>
-                    `block py-2 px-3 rounded-md transition-colors duration-200 ${
-                      isActive
-                        ? "bg-blue-700 text-white md:bg-transparent md:text-blue-700"
-                        : "text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700"
-                    } md:p-0 dark:text-white`
+                    `navbar-link ${isActive ? "active" : ""}`
                   }
                 >
+                  <FaHome className="navbar-link-icon" />
                   Home
                 </NavLink>
               </li>
-              <li>
+              <li className="navbar-menu-item">
                 <NavLink
                   to="/products"
                   className={({ isActive }) =>
-                    `block py-2 px-3 rounded-md transition-colors duration-200 ${
-                      isActive
-                        ? "bg-blue-700 text-white md:bg-transparent md:text-blue-700"
-                        : "text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700"
-                    } md:p-0 dark:text-white`
+                    `navbar-link ${isActive ? "active" : ""}`
                   }
                 >
+                  <FaBox className="navbar-link-icon" />
                   Products
                 </NavLink>
               </li>
-              <li>
+              <li className="navbar-menu-item">
                 <NavLink
                   to="/profile"
                   className={({ isActive }) =>
-                    `block py-2 px-3 rounded-md transition-colors duration-200 ${
-                      isActive
-                        ? "bg-blue-700 text-white md:bg-transparent md:text-blue-700"
-                        : "text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700"
-                    } md:p-0 dark:text-white`
+                    `navbar-link ${isActive ? "active" : ""}`
                   }
                 >
+                  <FaUser className="navbar-link-icon" />
                   Profile
                 </NavLink>
               </li>
-              <div className="flex gap-3 items-center justify-center">
-                <Drawer />
+              <div className="navbar-actions">
+                <Favorite />
+                <DrawerProduct />
                 {token ? (
                   <button
-                    className="text-white bg-red-600 hover:bg-red-700 py-2 px-4 rounded-lg transition-colors duration-200"
+                    className="navbar-logout-button"
                     onClick={clearStorage}
                   >
+                    <FaSignOutAlt className="navbar-logout-icon" />
                     Logout
                   </button>
                 ) : (
-                  <Link
-                    className="text-white bg-blue-600 hover:bg-blue-700 py-2 px-4 rounded-lg transition-colors duration-200"
-                    to={"/login"}
-                  >
+                  <Link className="navbar-login-button" to={"/login"}>
+                    <FaSignInAlt className="navbar-login-icon" />
                     Login
                   </Link>
                 )}

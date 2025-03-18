@@ -1,11 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
+import apiClient from "../services/api-client";
 import useAuthStore from "../app/authStore";
 
 
 const useProfile = () => {
-  const { token } = useAuthStore();
-
+  const {token}=useAuthStore()
   const {
     data,
     isLoading,
@@ -15,13 +14,7 @@ const useProfile = () => {
   } = useQuery({
     queryKey: ["profile"],
     queryFn: () =>
-      axios.get("https://dummyjson.com/auth/me", {
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
-        }
-      }).then((res) => res.data),
-    enabled: !!token, // Only run the query if we have a token
+      apiClient.get("/auth/me").then((res) => res.data),
   });
 
   return {

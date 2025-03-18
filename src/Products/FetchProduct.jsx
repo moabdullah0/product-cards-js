@@ -6,8 +6,6 @@ import { useProduct } from "../hooks/useProduct";
 import ProductCard from "./ProducstCard";
 import FilterProduct from "./FilterProduct";
 import LoadingSpinner from "../components/LoadingSpinner";
-
-
 const FetchProject = () => {
   const [search, setSearchQuery] = React.useState("");
   const { addToCart } = useCartStore();
